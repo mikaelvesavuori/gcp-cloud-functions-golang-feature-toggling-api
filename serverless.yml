@@ -1,0 +1,33 @@
+service:
+  name: golang-feature-toggling-api
+
+frameworkVersion: ">=1.60.0 <2.0.0"
+
+plugins:
+  - serverless-google-cloudfunctions
+
+provider:
+  name: google
+  runtime: go111
+  project: {PROJECT_ID}                 # CHANGE THIS
+  credentials: ~/.gcloud/{KEYFILE}.json # CHANGE THIS
+  region: ${opt:region, 'europe-west1'} # Set your default fallback region here
+  memorySize: 1024
+  timeout: "5s"
+  labels:
+    project: 'golang-feature-toggling-api'
+  environment:
+    ACCESS_CONTROL_ALLOW_ORIGIN: '*'    # Please don't use wildcard; but at least this will work as you get started
+    BUCKET_NAME: ''                     # CHANGE THIS: You need to set this to your own bucket containing the data file (JSON)
+    DATA_FILENAME: 'data.json'          # Specifying the provided sample file, but do change if your file has another name
+
+package:
+  exclude:
+    - .gitignore
+    - .git/**
+
+functions:
+  GetFlags:
+    handler: GetFlags
+    events:
+      - http: /

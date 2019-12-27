@@ -1,0 +1,24 @@
+{
+  "featureFlags": [
+    {
+      "market": "SE",
+      "newFeatureActive": true,
+      "abSplitPercentage": { "new": 50, "current": 50 }
+    },
+    {
+      "market": "US",
+      "newFeatureActive": false,
+      "abSplitPercentage": { "new": 30, "current": 70 }
+    },
+    {
+      "market": "JP",
+      "newFeatureActive": true,
+      "abSplitPercentage": { "new": 80, "current": 20 }
+    },
+    {
+      "market": "default",
+      "newFeatureActive": false,
+      "abSplitPercentage": { "new": 0, "current": 100 }
+    }
+  ]
+}
